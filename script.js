@@ -645,3 +645,44 @@ function confirmResetData() {
         location.reload();
     }, 800);
 }
+function openResetPopup() {
+    document.getElementById("resetPopup").classList.remove("hidden");
+}
+
+function closeResetPopup() {
+    document.getElementById("resetPopup").classList.add("hidden");
+}
+function confirmResetData() {
+
+    const defaultDB = {
+        saldo: 0,
+        history: [],
+        settings: {
+            limitBulanan: 1000000,
+            kategori: ["Makan", "Transport", "Belanja", "Hiburan", "Lainnya"],
+            motivasi: {
+                kuning: "Ayo lebih hemat lagi!",
+                merah: "STOP! Kamu sudah boros!"
+            },
+            notifikasi: {
+                aktif: false,
+                waktu: "08:00"
+            }
+        },
+        dream: {
+            title: "Atur Impian Anda!",
+            targetAmount: 0,
+            targetDate: ""
+        }
+    };
+
+    localStorage.setItem("db_fokusmasa", JSON.stringify(defaultDB));
+
+    closeResetPopup();
+
+    showToast("Data berhasil direset!", "success");
+
+    setTimeout(() => {
+        location.reload();
+    }, 800);
+}
